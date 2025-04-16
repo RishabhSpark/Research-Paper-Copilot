@@ -1,0 +1,26 @@
+[project]
+name = "research-paper-copilot"
+version = "0.1.0"
+description = "Multi-agent system for research paper retrieval, summarization, and Q&A using LLMs"
+authors = [
+    {name = "RishabhSpark",email = "rishabh1000khandelwal@gmail.com"}
+]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "langchain (>=0.3.23,<0.4.0)",
+    "faiss-cpu (>=1.10.0,<2.0.0)",
+    "sentence-transformers (>=4.1.0,<5.0.0)",
+    "pymupdf (>=1.25.5,<2.0.0)",
+    "streamlit (>=1.44.1,<2.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.poetry.dependencies]
+python = ">=3.12, <4.0"
