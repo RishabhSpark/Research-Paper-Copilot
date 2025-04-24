@@ -1,0 +1,31 @@
+1. PDF Text Extraction (Extract text from PDF)
+2. Chunking and Preprocessing (Chunk documents into small, overlapping chunks for better retrieval.)
+3. Embedding + Vector Store Setup (Store your chunked documents in a vector store for fast retrieval.)
+4. RAG Setup (Combine retrieval and generation to answer questions.)
+5. Multi-Agent Orchestration (
+                                Each agent performs a task:
+                                Extractor Agent: Loads and parses the PDF.
+                                Summarizer Agent: Generates a TL;DR or section-wise summary.
+                                Retriever Agent: Searches the vector DB.
+                                QA Agent: Answers based on query and retrieved context.
+                            )
+                            [
+                                LangGraph (LangChain's stateful multi-agent framework)
+                                CrewAI (Agent-centric execution)
+                                Autogen (if needed for more control)
+                            ]
+6. CLI/Web UI
+7. Add caching and persistence (Cache previously answered queries (SQLite or Chroma metadata), Save summaries and indexes)
+
+Optional
+8. Metadata extractor from sources like PubMed
+9. Multi-Paper QnA (Ingest multiple PDFs and compare them.)
+10. Citation tracing (Answer “Which paper does it cite for X?”)
+11. Plag or similarity detection
+
+
+Best Practices
+- Normalize and clean PDF text.
+- Add metadata (e.g., paper title, section tags) to chunks.
+- Log agent outputs for debugging.
+- Store LLM outputs for analysis/improvements.
