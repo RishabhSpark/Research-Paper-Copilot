@@ -24,7 +24,7 @@ def main():
 
     # Call Orchestrator to answer the query
     try:
-        response = orchestrator.answer_query(query=query, filepath=filepath)
+        response = orchestrator.answer_query(query=query, filepath=filepath, top_k=5)
         print("\nResponse:")
         print(response)
     except Exception as e:

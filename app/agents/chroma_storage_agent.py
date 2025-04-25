@@ -1,7 +1,5 @@
-from chromadb import Embeddings
 from app.core.vector_storage import add_embeddings_to_chroma
 from chromadb.api.models import Collection
-from typing import List
 
 class ChromaStorageAgent:
     def __init__(self, collection: Collection):

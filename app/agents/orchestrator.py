@@ -29,7 +29,7 @@ class OrchestratorAgent:
 
         # Step 2: Chunk the documents
         chunked_docs = self.chunking_agent.chunk_documents(documents)
-        # print(chunked_docs)
+        print("Docs chunked")
 
         # Step 3: Generate embeddings for chunked documents
         embeddings = self.embeddings_generation_agent.generate_embeddings(chunked_docs)
