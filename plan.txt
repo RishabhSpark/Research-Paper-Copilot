@@ -9,11 +9,6 @@
                                 Retriever Agent: Searches the vector DB.
                                 QA Agent: Answers based on query and retrieved context.
                             )
-                            [
-                                LangGraph (LangChain's stateful multi-agent framework)
-                                CrewAI (Agent-centric execution)
-                                Autogen (if needed for more control)
-                            ]
 6. CLI/Web UI
 7. Add caching and persistence (Cache previously answered queries (SQLite or Chroma metadata), Save summaries and indexes)
 
