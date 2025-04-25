@@ -6,7 +6,13 @@ from typing import List, Callable
 def init_chroma_db() -> Collection:
     """Initializes chroma client and creates a function"""
     client = chromadb.Client()
-    collection = client.create_collection(name="document_embeddings")
+
+    try:
+        collection = client.get_collection("document_embeddings")
+    except Exception as e:
+        # If there's any error (e.g., collection not found), create the collection
+        collection = client.create_collection(name="document_embeddings")
+
     return collection
 
 def add_embeddings_to_chroma(
