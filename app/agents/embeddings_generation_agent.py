@@ -3,7 +3,7 @@ from typing import List
 
 class EmbeddingGenerationAgent:
     def __init__(self):
-        self.embeddings_model = get_embeddings_model()  # Default model, can be passed as argument
+        self.embeddings_model = get_embeddings_model()
 
     def generate_embeddings(self, documents):
         """Generate embeddings for a list of documents."""

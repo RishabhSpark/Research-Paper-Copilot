@@ -30,7 +30,6 @@ class OrchestratorAgent:
         # Step 2: Chunk the documents
         chunked_docs = self.chunking_agent.chunk_documents(documents)
         print("Docs chunked")
-        print(chunked_docs)
 
         # Step 3: Generate embeddings for chunked documents
         embeddings = self.embeddings_generation_agent.generate_embeddings(chunked_docs)
@@ -52,10 +51,6 @@ class OrchestratorAgent:
         if not docs:
             return self.clarification_agent.ask_for_clarification(query=query)
         print("Retrieved docs based on query")
-
-        # Step 6: Format the documents into a context string
-        # context = [doc.page_content for doc in chunked_docs]
-        # print("Formatted the documents into a context string")
 
         # Step 7: Build prompt and generate response
         prompt = self.prompt_builder_agent.build_prompt(query=query, docs=context)

@@ -37,6 +37,3 @@ def load_pdf(filepath: str) -> List[Document]:
 
     print(f"[PDF LOADER] Loaded {len(documents)} page(s) from '{filepath}'")
     return documents
-
-    # print(f"[PDF LOADER] Loaded {len(documents)} page(s) from '{filepath}'")
-    # return documents
