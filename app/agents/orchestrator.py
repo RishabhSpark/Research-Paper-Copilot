@@ -48,9 +48,8 @@ class OrchestratorAgent:
         print("Retrieved docs based on query")
 
         # Step 6: Format the documents into a context string
-        context = [doc.page_content for doc in docs]
+        context = [doc.page_content for doc in chunked_docs]
         print("Formatted the documents into a context string")
-        # print(context)
 
         # Step 7: Build prompt and generate response
         prompt = self.prompt_builder_agent.build_prompt(query=query, docs=context)

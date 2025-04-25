@@ -1,6 +1,9 @@
 import os
 from app.agents.orchestrator import OrchestratorAgent
-from app.core.vector_storage import init_chroma_db
+from app.core.vector_storage import init_chroma_db  # Import your init_chroma_db function
+from dotenv import load_dotenv
+
+load_dotenv()
 
 def main():
     chroma_collection = init_chroma_db()
