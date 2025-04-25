@@ -29,24 +29,18 @@ class OrchestratorAgent:
 
         # Step 2: Chunk the documents
         chunked_docs = self.chunking_agent.chunk_documents(documents)
-        print("Docs chunked")
-        print(chunked_docs)
+        # print(chunked_docs)
 
         # Step 3: Generate embeddings for chunked documents
         embeddings = self.embeddings_generation_agent.generate_embeddings(chunked_docs)
         print("Embeddings generated")
         # print(embeddings)
 
-        # Step 4: Format the documents into a context string
-        context = [doc.page_content for doc in chunked_docs]
-        print("Formatted the documents into a context string")
-        # print(context)
-
-        # Step 5: Store embeddings in ChromaDB
+        # Step 4: Store embeddings in ChromaDB
         self.chromadb_storage_agent.store_embeddings(chunked_docs, embeddings)
         print("Embeddings stored in ChromaDB")
 
-        # Step 6: Retrieve documents based on query
+        # Step 5: Retrieve documents based on query
         docs, metas = self.retrieval_agent.retrieve_documents(query=query)
     
         if not docs:
@@ -54,8 +48,8 @@ class OrchestratorAgent:
         print("Retrieved docs based on query")
 
         # Step 6: Format the documents into a context string
-        # context = [doc.page_content for doc in chunked_docs]
-        # print("Formatted the documents into a context string")
+        context = [doc.page_content for doc in chunked_docs]
+        print("Formatted the documents into a context string")
 
         # Step 7: Build prompt and generate response
         prompt = self.prompt_builder_agent.build_prompt(query=query, docs=context)
