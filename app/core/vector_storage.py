@@ -1,8 +1,9 @@
 import chromadb
 from langchain.schema import Document
+from chromadb.api.models import Collection
 from typing import List, Callable
 
-def init_chroma_db() -> chromadb.api.models.Collection.Collection:
+def init_chroma_db() -> Collection:
     """Initializes chroma client and creates a function"""
     client = chromadb.Client()
     collection = client.create_collection(name="document_embeddings")
@@ -10,16 +11,19 @@ def init_chroma_db() -> chromadb.api.models.Collection.Collection:
 
 def add_embeddings_to_chroma(
         documents: List[Document], 
-        embeddings: Callable[[List[str]], 
-        List[List[float]]], 
-        collection: chromadb.api.models.Collection.Collection) -> None:
+        embeddings, 
+        collection: Collection) -> None:
     """Add embeddings and documents to Chroma collection."""
     texts = [doc.page_content for doc in documents]
     metadatas = [doc.metadata for doc in documents]
 
-    embeddings_data = embeddings.embed_documents(texts)
+    embeddings_data = embeddings
+
+    # Generate unique ids for each document
+    ids = [f"doc_{i}" for i in range(len(documents))]
 
     collection.add(
+        ids = ids,
         documents = texts,
         metadatas = metadatas,
         embeddings = embeddings_data
@@ -30,7 +34,7 @@ def add_embeddings_to_chroma(
 
 def query_chroma(
         query: str, 
-        collection: chromadb.api.models.Collection.Collection, 
+        collection: Collection, 
         embed_query_fn: Callable[[str], List[float]], 
         top_k:int = 5):
     """Query Chroma database for similar documents."""
