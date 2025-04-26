@@ -1,5 +1,5 @@
 # Research-Paper-Copilot
-GenAI Project — LLMs, agents, RAG, embeddings, and real-world use.
+LLMs, agents, RAG, embeddings, and real-world use.
 
 A multi-agent system that lets you **upload a research paper (PDF)** and **ask questions** about it!  
 Built with **Streamlit** for UI, **ChromaDB** for vector storage, and a modular **Agentic Architecture** for document understanding.
