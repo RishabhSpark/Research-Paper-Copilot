@@ -176,6 +176,3 @@ cython_debug/
 
 # VS Code files
 .vscode/
-
-# ipynb noteooks
-notebooks/
