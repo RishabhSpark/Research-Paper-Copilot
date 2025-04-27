@@ -2,7 +2,7 @@ import streamlit as st
 import chromadb
 import sys
 import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 from app.ui.pubmed_ui import PubMedUI
 from app.ui.paper_qa_ui import PaperQAUIController
 from app.agents import SinglePaperOrchestratorAgent
