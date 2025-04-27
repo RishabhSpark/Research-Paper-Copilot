@@ -176,3 +176,7 @@ cython_debug/
 
 # VS Code files
 .vscode/
+
+# ChromaDB
+chroma_db/
+
