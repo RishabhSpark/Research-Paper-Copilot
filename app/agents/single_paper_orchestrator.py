@@ -3,6 +3,7 @@ from .chroma_storage_agent import ChromaStorageAgent
 from .text_chunking_agent import TextChunkingAgent
 from .prompt_builder_agent import PromptBuilderAgent
 from .response_generation_agent import ResponseGenerationAgent
+from .generate_summary_agent import GenerateSummaryAgent
 from chromadb.api.models import Collection
 from typing import List, Dict, Optional
 from langchain.schema import Document
@@ -24,6 +25,7 @@ class SinglePaperOrchestratorAgent:
         self.chunking_agent = TextChunkingAgent()
         self.prompt_builder_agent = PromptBuilderAgent()
         self.response_agent = ResponseGenerationAgent()
+        self.summary_agent = GenerateSummaryAgent()
         self.collection = collection
     
     def process_paper(self, paper_text: str) -> List[Document]:
@@ -81,8 +83,4 @@ class SinglePaperOrchestratorAgent:
         Returns:
             Generated summary
         """
-        # Generate a summary for the paper
-        summary_prompt = f"Summarize the following research paper in 3-5 paragraphs:\n\n{paper_text[:5000]}..."
-        summary = self.response_agent.generate_response(prompt=summary_prompt)
-        
-        return summary 
+        return self.summary_agent.generate_summary(paper_text) 

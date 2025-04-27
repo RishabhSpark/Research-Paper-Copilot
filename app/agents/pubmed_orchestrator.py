@@ -4,6 +4,7 @@ from .chroma_storage_agent import ChromaStorageAgent
 from .text_chunking_agent import TextChunkingAgent
 from .prompt_builder_agent import PromptBuilderAgent
 from .response_generation_agent import ResponseGenerationAgent
+from .generate_summary_agent import GenerateSummaryAgent
 from chromadb.api.models import Collection
 from typing import List, Dict
 
@@ -27,6 +28,7 @@ class PubMedOrchestratorAgent:
         self.chunking_agent = TextChunkingAgent()
         self.prompt_builder_agent = PromptBuilderAgent()
         self.response_agent = ResponseGenerationAgent()
+        self.summary_agent = GenerateSummaryAgent()
         self.collection = collection
     
     def process_papers(self, papers: List[Dict[str, str]]) -> List[str]:
@@ -103,10 +105,8 @@ class PubMedOrchestratorAgent:
             pmcid = paper["pmcid"]
             text = paper["text"]
             
-            # Generate a summary for each paper
-            summary_prompt = f"Summarize the following research paper in 3-5 sentences:\n\n{text[:2000]}..."
-            summary = self.response_agent.generate_response(prompt=summary_prompt)
-            
+            # Generate a summary for each paper using the summary agent
+            summary = self.summary_agent.generate_summary(text, max_length=2000, summary_type="sentences")
             summaries[pmcid] = summary
         
         return summaries

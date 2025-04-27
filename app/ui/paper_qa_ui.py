@@ -31,28 +31,36 @@ class PaperQAUIController:
         st.subheader(f"Paper: {paper_data['pmcid']}")
         
         # Generate and display summary
-        with st.spinner("Generating summary..."):
-            summary = self.orchestrator.generate_summary(paper_data['text'])
-            st.subheader("Summary")
-            st.write(summary)
+        try:
+            with st.spinner("Generating summary..."):
+                summary = self.orchestrator.generate_summary(paper_data['text'])
+                st.subheader("Summary")
+                st.write(summary)
+        except Exception as e:
+            st.error(f"Error generating summary: {str(e)}")
+            st.info("Please try again or proceed with Q&A.")
         
         # Q&A section
         st.subheader("Ask Questions")
         query = st.text_input("Enter your question about the paper:")
         
         if query:
-            with st.spinner("Generating answer..."):
-                response = self.orchestrator.answer_query(query, paper_data['text'])
-                st.subheader("Answer")
-                st.write(response)
-                
-                # Store Q&A in session state
-                if 'qa_history' not in st.session_state:
-                    st.session_state.qa_history = []
-                st.session_state.qa_history.append({
-                    'question': query,
-                    'answer': response
-                })
+            try:
+                with st.spinner("Generating answer..."):
+                    response = self.orchestrator.answer_query(query, paper_data['text'])
+                    st.subheader("Answer")
+                    st.write(response)
+                    
+                    # Store Q&A in session state
+                    if 'qa_history' not in st.session_state:
+                        st.session_state.qa_history = []
+                    st.session_state.qa_history.append({
+                        'question': query,
+                        'answer': response
+                    })
+            except Exception as e:
+                st.error(f"Error generating answer: {str(e)}")
+                st.info("Please try rephrasing your question.")
         
         # Display Q&A history
         if 'qa_history' in st.session_state and st.session_state.qa_history:
