@@ -65,4 +65,4 @@ def main():
         qa_controller.render_qa_interface(paper_data)
 
 if __name__ == "__main__":
-    main() 
+    main()
