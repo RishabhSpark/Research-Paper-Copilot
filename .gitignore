@@ -51,6 +51,10 @@ coverage.xml
 .pytest_cache/
 cover/
 
+# ChromaDB
+chroma_db/
+chroma_db/*
+
 # Translations
 *.mo
 *.pot
@@ -176,7 +180,3 @@ cython_debug/
 
 # VS Code files
 .vscode/
-
-# ChromaDB
-chroma_db/
-chroma_db/*
