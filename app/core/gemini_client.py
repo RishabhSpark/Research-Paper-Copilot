@@ -1,12 +1,13 @@
 import os
 import google.generativeai as genai
 from dotenv import load_dotenv
+import streamlit as st
 
 load_dotenv()
 
-api_key = os.getenv("GOOGLE_API_KEY")
+api_key = st.secrets.get("GOOGLE_API_KEY") or os.getenv("GOOGLE_API_KEY")
 if not api_key:
-    raise ValueError("Missing GOOGLE_API_KEY in s.env")
+    raise ValueError("Missing GOOGLE_API_KEY")
 
 model = genai.GenerativeModel("gemini-1.5-flash")
 
