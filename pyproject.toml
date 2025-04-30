@@ -37,3 +37,6 @@ python = ">=3.12, <4.0"
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.5"
 ipykernel = "^6.29.5"
+
+[tool.poetry]
+package-mode = false
