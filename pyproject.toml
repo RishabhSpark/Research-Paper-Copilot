@@ -40,3 +40,15 @@ ipykernel = "^6.29.5"
 
 [tool.poetry]
 package-mode = false
+
+[tool.black]
+line-length = 72
+target-version = ['py39']
+
+[tool.isort]
+line_length = 72
+profile = "black"
+
+[tool.flake8]
+max-line-length = 72
+exclude = ["__pycache__", "build", "dist", ".venv"]
